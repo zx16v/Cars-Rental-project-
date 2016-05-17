@@ -1,0 +1,40 @@
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\01 DAL\bin\Debug\01 DAL.dll.config
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\01 DAL\bin\Debug\01 DAL.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\01 DAL\bin\Debug\01 DAL.pdb
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\01 DAL\bin\Debug\EntityFramework.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\01 DAL\bin\Debug\EntityFramework.xml
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\01 DAL\obj\Debug\01 DAL.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\01 DAL\obj\Debug\01 DAL.pdb
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\01 DAL\obj\Debug\01 Dal.csprojResolveAssemblyReference.cache
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\01 DAL\bin\Debug\01 DAL.dll.config
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\01 DAL\bin\Debug\01 DAL.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\01 DAL\bin\Debug\01 DAL.pdb
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\01 DAL\bin\Debug\EntityFramework.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\01 DAL\bin\Debug\EntityFramework.xml
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\01 DAL\obj\Debug\01 Dal.csprojResolveAssemblyReference.cache
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\01 DAL\obj\Debug\01 DAL.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\01 DAL\obj\Debug\01 DAL.pdb
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\01 DAL\bin\Debug\01 DAL.dll.config
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\01 DAL\bin\Debug\01 DAL.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\01 DAL\bin\Debug\01 DAL.pdb
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\01 DAL\bin\Debug\EntityFramework.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\01 DAL\bin\Debug\EntityFramework.xml
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\01 DAL\obj\Debug\01 Dal.csprojResolveAssemblyReference.cache
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\01 DAL\obj\Debug\01 DAL.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\01 DAL\obj\Debug\01 DAL.pdb
+C:\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\bin\Debug\01 DAL.dll.config
+C:\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\bin\Debug\01 DAL.dll
+C:\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\bin\Debug\01 DAL.pdb
+C:\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\bin\Debug\EntityFramework.dll
+C:\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\bin\Debug\EntityFramework.xml
+C:\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\obj\Debug\01 Dal.csprojResolveAssemblyReference.cache
+C:\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\obj\Debug\01 DAL.dll
+C:\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\obj\Debug\01 DAL.pdb
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\bin\Debug\01 DAL.dll.config
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\bin\Debug\01 DAL.dll
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\bin\Debug\01 DAL.pdb
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\bin\Debug\EntityFramework.dll
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\bin\Debug\EntityFramework.xml
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\obj\Debug\01 Dal.csprojResolveAssemblyReference.cache
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\obj\Debug\01 DAL.dll
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\01 DAL\obj\Debug\01 DAL.pdb

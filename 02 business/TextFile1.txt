@@ -1,0 +1,18 @@
+﻿//public IEnumerable GetProductsByRange(decimal min, decimal max)
+        //{
+        //    return DB.Products.Where(p => p.UnitPrice >= min && p.UnitPrice <= max).OrderBy(p => p.UnitPrice)
+        //        .Select(p => new { p.ProductName, p.UnitPrice }).ToList();
+        //}
+
+        //public IEnumerable GetProductsByCategory(int categoryID)
+        //{
+        //    return DB.Products.Where(p => p.CategoryID == categoryID).OrderBy(p => p.UnitPrice)
+        //        .Select(p => new { p.ProductName, p.UnitPrice }).ToList();
+        //}
+		   //public List<GetAvailableCars_Result> GetCarAvailableCars(DateTime StartDate, DateTime EndDate)
+        //{
+        //    return DB.GetAvailableCars( StartDate, EndDate).ToList();
+        //}
+		 // new SelectList(Model.AvailableDesserts, "DessertID", "DessertName"), "---Select A Dessert ---")
+		 //כל חיפוש לשמור את זה בסטורג' ואז להציג  וכל חיפוש לשמור עוד 
+		 

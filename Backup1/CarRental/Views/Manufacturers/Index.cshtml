@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Shim_Cars.Manufacturer>
+@ViewBag.Title = "my title"
+  
+
+<h2>Index</h2>
+@Html.ActionLink("Car", "Index", "Car")
+@Html.ActionLink("Users", "Index", "Users")
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ManufacturerName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManufacturerName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ManufacturerCode }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ManufacturerCode }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ManufacturerCode })
+        </td>
+    </tr>
+}
+
+</table>

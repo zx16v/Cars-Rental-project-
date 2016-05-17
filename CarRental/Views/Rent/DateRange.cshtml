@@ -1,0 +1,79 @@
+﻿@model  Shim_Cars.Models.SearchViewModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+
+@using (Html.BeginForm())
+{
+  
+     @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+  
+    <fieldset>
+        <legend>CarSearch</legend>
+        <style>
+        table,th,td {
+    border:1px solid black;
+          }
+
+caption { 
+    display: table-caption;
+    text-align: center;
+}
+</style>
+     
+        <div class="editor -label">
+            @Html.LabelFor(model => model.BeginDate)
+        </div>
+         <div class="editor-field">
+            @Html.EditorFor(model => model.BeginDate)
+            @Html.ValidationMessageFor(model => model.BeginDate)
+        </div>
+           
+         <div class="editor -label">
+            @Html.LabelFor(model => model.EndDate)
+        </div>
+         <div class="editor-field">
+            @Html.EditorFor(model => model.EndDate)
+            @Html.ValidationMessageFor(model => model.EndDate)
+        </div>
+         </fieldset>
+
+@section Scripts {
+  @*  @Scripts.Render("~/bundles/jqueryval")*@
+@Styles.Render("~/Content/themes/bootstrap-datepicker.css")
+
+    <script type="text/javascript">
+  @* // <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script>   ; *@
+        $(document).ready(function()
+        {
+            $('#BeginDate').datepicker({ dateFormat: 'dd-mm-yy' }).datepicker("setDate", new Date());
+            $('#EndDate').datepicker({ dateFormat: 'dd-mm-yy' }).datepicker("setDate", new Date());
+        } )
+        $.datepicker.setDefaults({
+            showOn: "button",
+            buttonImage: "~/Content/themes/base/images/sunbird.png",
+            buttonImageOnly: true, 
+            buttonText: "Select date",
+            dateFormat: 'yy-mm-dd',
+            minDate: 0,
+            maxDate: 60
+        });
+        $('#BeginDate').datepicker({
+            onSelect: function (selectedDate) {
+                $('#EndDate').datepicker('option', 'minDate', selectedDate );
+            }
+        });
+        $('#EndDate').datepicker({
+            onSelect: function (selectedDate) {
+                $('#BeginDate').datepicker('option', 'maxDate', selectedDate );
+            }
+         
+        });
+        
+    </script>
+  }

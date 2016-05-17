@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarsRentalModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CarsRentalEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Cars" EntityType="CarsRentalModel.Car" />
+    <EntitySet Name="CarsModels" EntityType="CarsRentalModel.CarsModel" />
+    <EntitySet Name="CarsRentals" EntityType="CarsRentalModel.CarsRental" />
+    <EntitySet Name="Manufacturers" EntityType="CarsRentalModel.Manufacturer" />
+    <EntitySet Name="Roles" EntityType="CarsRentalModel.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="CarsRentalModel.sysdiagram" />
+    <EntitySet Name="Users" EntityType="CarsRentalModel.User" />
+    <AssociationSet Name="FK_AllCars_CarsModels" Association="CarsRentalModel.FK_AllCars_CarsModels">
+      <End Role="CarsModels" EntitySet="CarsModels" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarsRental_AllCars1" Association="CarsRentalModel.FK_CarsRental_AllCars1">
+      <End Role="Cars" EntitySet="Cars" />
+      <End Role="CarsRental" EntitySet="CarsRentals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarsModels_Manufacturers" Association="CarsRentalModel.FK_CarsModels_Manufacturers">
+      <End Role="Manufacturers" EntitySet="Manufacturers" />
+      <End Role="CarsModels" EntitySet="CarsModels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarsRental_Users1" Association="CarsRentalModel.FK_CarsRental_Users1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="CarsRental" EntitySet="CarsRentals" />
+    </AssociationSet>
+    <AssociationSet Name="UserVsRoles" Association="CarsRentalModel.UserVsRoles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <FunctionImport Name="SearchRentedCarsByDateRange" ReturnType="Collection(CarsRentalModel.SearchRentedCarsByDateRange_Result)" IsComposable="true">
+      <Parameter Name="BeginDate" Type="DateTime" />
+      <Parameter Name="EndDate" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="GetAvailableCars" ReturnType="Collection(CarsRentalModel.GetAvailableCars_Result)">
+      <Parameter Name="desiredStartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="desiredEndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="MakeID" Mode="In" Type="Int32" />
+      <Parameter Name="ModelCode" Mode="In" Type="Int32" />
+      <Parameter Name="GearType" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="GetAvailableCarsByModels" ReturnType="Collection(CarsRentalModel.GetAvailableCarsByModels_Result)">
+      <Parameter Name="desiredStartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="desiredEndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="MakeID" Mode="In" Type="Int32" />
+      <Parameter Name="ModelCode" Mode="In" Type="Int32" />
+      <Parameter Name="GearType" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="GetAvailableCarsColumn" ReturnType="Collection(CarsRentalModel.GetAvailableCarsColumn_Result)">
+      <Parameter Name="desiredStartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="desiredEndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="GetCars" ReturnType="Collection(CarsRentalModel.GetCars_Result)" />
+    <FunctionImport Name="GetCarsModelByMaker" ReturnType="Collection(CarsRentalModel.GetCarsModelByMaker_Result)">
+      <Parameter Name="MakerID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetUnicAvailableCars" ReturnType="Collection(CarsRentalModel.GetUnicAvailableCars_Result)">
+      <Parameter Name="desiredStartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="desiredEndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="MakeID" Mode="In" Type="Int32" />
+      <Parameter Name="ModelCode" Mode="In" Type="Int32" />
+      <Parameter Name="GearType" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="nulltest" ReturnType="Collection(String)">
+      <Parameter Name="rmk" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RentOrder">
+      <Parameter Name="desiredStartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="desiredEndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="CarNumber" Mode="In" Type="Int32" />
+      <Parameter Name="UserIdCode" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SearchCar" ReturnType="Collection(CarsRentalModel.SearchCar_Result)">
+      <Parameter Name="BeginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="MakerID" Mode="In" Type="Int32" />
+      <Parameter Name="ModelCode" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CarsRentalModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CarsRentalModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="SearchRentedCarsByDateRange_Result">
+    <Property Name="ManufacturerName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ModelName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Gear" Type="Boolean" Nullable="false" />
+    <Property Name="DailyRentalCost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="DailyLateReturnCost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+  </ComplexType>
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="CarNumber" />
+    </Key>
+    <Property Name="CarNumber" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ModelCode" Type="Int32" Nullable="false" />
+    <Property Name="Mileage" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="CarImage" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Available" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CarsModel" Relationship="CarsRentalModel.FK_AllCars_CarsModels" FromRole="Cars" ToRole="CarsModels" />
+    <NavigationProperty Name="CarsRentals" Relationship="CarsRentalModel.FK_CarsRental_AllCars1" FromRole="Cars" ToRole="CarsRental" />
+  </EntityType>
+  <EntityType Name="CarsModel">
+    <Key>
+      <PropertyRef Name="ModelCode" />
+    </Key>
+    <Property Name="ModelCode" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ManufacturerCode" Type="Int32" Nullable="false" />
+    <Property Name="ModelName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Gear" Type="Boolean" Nullable="false" />
+    <Property Name="DailyRentalCost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="DailyLateReturnCost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Cars" Relationship="CarsRentalModel.FK_AllCars_CarsModels" FromRole="CarsModels" ToRole="Cars" />
+    <NavigationProperty Name="Manufacturer" Relationship="CarsRentalModel.FK_CarsModels_Manufacturers" FromRole="CarsModels" ToRole="Manufacturers" />
+  </EntityType>
+  <EntityType Name="CarsRental">
+    <Key>
+      <PropertyRef Name="CodeCarRental" />
+    </Key>
+    <Property Name="CodeCarRental" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CarNumber" Type="Int32" Nullable="false" />
+    <Property Name="UserIDCode" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ReturnDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ActualReturnDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Car" Relationship="CarsRentalModel.FK_CarsRental_AllCars1" FromRole="CarsRental" ToRole="Cars" />
+    <NavigationProperty Name="User" Relationship="CarsRentalModel.FK_CarsRental_Users1" FromRole="CarsRental" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="ManufacturerCode" />
+    </Key>
+    <Property Name="ManufacturerCode" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ManufacturerName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="CarsModels" Relationship="CarsRentalModel.FK_CarsModels_Manufacturers" FromRole="Manufacturers" ToRole="CarsModels" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Users" Relationship="CarsRentalModel.UserVsRoles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserIDCode" />
+    </Key>
+    <Property Name="UserIDCode" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="BirthDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CarsRentals" Relationship="CarsRentalModel.FK_CarsRental_Users1" FromRole="Users" ToRole="CarsRental" />
+    <NavigationProperty Name="Roles" Relationship="CarsRentalModel.UserVsRoles" FromRole="Users" ToRole="Roles" />
+  </EntityType>
+  <Association Name="FK_AllCars_CarsModels">
+    <End Role="CarsModels" Type="CarsRentalModel.CarsModel" Multiplicity="1" />
+    <End Role="Cars" Type="CarsRentalModel.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarsModels">
+        <PropertyRef Name="ModelCode" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="ModelCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarsRental_AllCars1">
+    <End Role="Cars" Type="CarsRentalModel.Car" Multiplicity="1" />
+    <End Role="CarsRental" Type="CarsRentalModel.CarsRental" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cars">
+        <PropertyRef Name="CarNumber" />
+      </Principal>
+      <Dependent Role="CarsRental">
+        <PropertyRef Name="CarNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarsModels_Manufacturers">
+    <End Role="Manufacturers" Type="CarsRentalModel.Manufacturer" Multiplicity="1" />
+    <End Role="CarsModels" Type="CarsRentalModel.CarsModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturers">
+        <PropertyRef Name="ManufacturerCode" />
+      </Principal>
+      <Dependent Role="CarsModels">
+        <PropertyRef Name="ManufacturerCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarsRental_Users1">
+    <End Role="Users" Type="CarsRentalModel.User" Multiplicity="1" />
+    <End Role="CarsRental" Type="CarsRentalModel.CarsRental" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserIDCode" />
+      </Principal>
+      <Dependent Role="CarsRental">
+        <PropertyRef Name="UserIDCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserVsRoles">
+    <End Role="Roles" Type="CarsRentalModel.Role" Multiplicity="*" />
+    <End Role="Users" Type="CarsRentalModel.User" Multiplicity="*" />
+  </Association>
+  <ComplexType Name="GetAvailableCars_Result">
+    <Property Type="String" Name="ManufacturerName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="ManufacturerCode" Nullable="false" />
+    <Property Type="String" Name="ModelName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="CarNumber" Nullable="false" />
+    <Property Type="Int32" Name="ModelCode" Nullable="false" />
+    <Property Type="Int32" Name="Year" Nullable="false" />
+    <Property Type="Boolean" Name="Gear" Nullable="false" />
+    <Property Type="Decimal" Name="DailyRentalCost" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="DailyLateReturnCost" Nullable="false" Precision="18" Scale="0" />
+  </ComplexType>
+  <ComplexType Name="GetAvailableCarsByModels_Result">
+    <Property Type="String" Name="ModelName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ManufacturerName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="ManufacturerCode" Nullable="false" />
+    <Property Type="Int32" Name="ModelCode" Nullable="false" />
+    <Property Type="Int32" Name="Year" Nullable="false" />
+    <Property Type="Boolean" Name="Gear" Nullable="false" />
+    <Property Type="Decimal" Name="DailyRentalCost" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="DailyLateReturnCost" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="CarImage" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetAvailableCarsColumn_Result">
+    <Property Type="Int32" Name="CarNumber" Nullable="false" />
+    <Property Type="Int32" Name="ModelCode" Nullable="false" />
+    <Property Type="Decimal" Name="Mileage" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="CarImage" Nullable="false" />
+    <Property Type="Boolean" Name="Available" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetCars_Result">
+    <Property Type="String" Name="ManufacturerName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ModelName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Year" Nullable="false" />
+    <Property Type="Boolean" Name="Gear" Nullable="false" />
+    <Property Type="Decimal" Name="DailyRentalCost" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="DailyLateReturnCost" Nullable="false" Precision="18" Scale="0" />
+  </ComplexType>
+  <ComplexType Name="GetCarsModelByMaker_Result">
+    <Property Type="Int32" Name="ModelCode" Nullable="false" />
+    <Property Type="String" Name="ModelName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetUnicAvailableCars_Result">
+    <Property Type="String" Name="ManufacturerName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="ManufacturerCode" Nullable="false" />
+    <Property Type="String" Name="ModelName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="CarNumber" Nullable="true" />
+    <Property Type="Int32" Name="ModelCode" Nullable="false" />
+    <Property Type="Int32" Name="Year" Nullable="false" />
+    <Property Type="Boolean" Name="Gear" Nullable="false" />
+    <Property Type="Decimal" Name="DailyRentalCost" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="DailyLateReturnCost" Nullable="false" Precision="18" Scale="0" />
+  </ComplexType>
+  <ComplexType Name="SearchCar_Result">
+    <Property Type="String" Name="ManufacturerName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ModelName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Year" Nullable="false" />
+    <Property Type="Boolean" Name="Gear" Nullable="false" />
+    <Property Type="Decimal" Name="DailyRentalCost" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="DailyLateReturnCost" Nullable="false" Precision="18" Scale="0" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

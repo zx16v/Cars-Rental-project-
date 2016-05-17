@@ -1,0 +1,20 @@
+﻿
+
+@model  List<Shim_Cars.GetCars_Result>
+
+
+@{
+    ViewBag.Title = "All Cars";
+  
+    
+}
+@Html.ActionLink("Manufacturers", "Index", "Manufacturers");
+@Html.ActionLink("Account", "Register", "Account");
+<h2>All Cars</h2>
+<ul>
+    @foreach (Shim_Cars.GetCars_Result item in Model)
+    {
+        <li>@item.ManufacturerName    @item.ModelName     @item.Year  @item.Gear @item.DailyRentalCost  @item.DailyLateReturnCost   </li>
+    }
+</ul>
+ 

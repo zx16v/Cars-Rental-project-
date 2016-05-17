@@ -1,0 +1,214 @@
+﻿@using Shim_Cars.Models
+@model  Shim_Cars.Models.OrderViewModel
+
+@{
+    ViewBag.Title = "Place an Order for car rent";
+ }
+
+<h2>@ViewBag.Title</h2>
+<h2>@ViewBag.Message</h2>
+@*@if (Model.Year == 0)
+{
+ <h1>2 clicks</h1>
+}*@
+@*<h2>@ViewData["message"]</h2>*@
+@Html.ActionLink("Search", "CarsIndex", "Search");
+@Html.ActionLink("Logout", "Logout", "Account");
+@*  @Html.Partial("DateRange")*@
+@*@Html.BeginForm("actionName", "controllerName", FormMethod.Post, new {@id="frmId", @class = "frmStyle"})*@
+@using (Html.BeginForm("MakeOrderP", "Rent", FormMethod.Post, new { @id = "frmId" })   )
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+    <legend>CarOrder</legend>
+   @* <p> <input id="OrderButton" type="button" value="Order" /></p> *@
+    <br />
+      <div class="CSSTableGenerator">
+      <table style=" border:medium ">
+          <tr><th colspan="2">Order Details</th></tr>
+          <tr><td>Car DailyLateReturnCost:</td><td> @Model.DailyLateReturnCost</td></tr>
+          <tr><td>Car Number:</td><td>@Model.CarNumber</td></tr>
+          <tr><td>UserName:</td><td>@Model.UserName</td></tr>  
+          <tr><td>Car DailyLateReturnCost:</td><td> @Model.DailyLateReturnCost</td></tr>
+          <tr><td>Car DailyRentalCost: </td><td>@Model.DailyRentalCost</td></tr>
+          <tr><td>Car GearType:</td><td> @Model.GearType</td></tr>
+          <tr><td>Car ManufacturerNam:</td><td> @Model.ManufacturerName</td></tr>
+          <tr><td>Car ModelName:</td><td> @Model.ModelName</td></tr>
+          <tr><td>Car PicUpDate:</td><td> @Model.PicUpDate</td></tr>
+          <tr><td>Car ReturnDate:</td><td> @Model.ReturnDate</td></tr>
+          <tr><td>Car Year:</td><td> @Model.Year</td></tr>
+          </table></div>
+          <div id="dialog-overlay"></div>
+          <div id="dialog-box">
+	      <div class="dialog-content">
+		  <div id="dialog-message" ></div>
+		       <a href="#" class="button">Close</a>
+	             </div>
+                 </div>
+        <input type="submit" value="Order">
+        </fieldset>
+ 
+}
+
+@section Scripts {
+ 
+    <script type="text/javascript">
+
+@*        $('#frmId').submit(function () {
+            @Url.Action("MakeOrderP", "Rent");
+            popup("Dear Mr/s " + '@Model.UserName' + " your order has been aprooved");
+            return false;
+        });*@
+
+        //document.getElementById("frmId").submit(function () {
+        //    return false;
+        //});
+
+
+
+        $(document).ready(function () {
+
+            // if user clicked on button, the overlay layer or the dialogbox, close the dialog	
+            $('a.btn-ok, #dialog-overlay, #dialog-box').click(function () {
+                $('#dialog-overlay, #dialog-box').hide();
+                return false;
+            });
+
+            // if user resize the window, call the same function again
+            // to make sure the overlay fills the screen and dialogbox aligned to center	
+            $(window).resize(function () {
+
+                //only do it if the dialog box is not hidden
+                if (!$('#dialog-box').is(':hidden')) popup();
+            });
+
+
+        });
+
+        function popup(message) {
+
+            // get the screen height and width  
+            var maskHeight = $(document).height();
+            var maskWidth = $(window).width();
+
+            // calculate the values for center alignment
+            var dialogTop = (maskHeight / 3) - ($('#dialog-box').height());
+            var dialogLeft = (maskWidth / 2) - ($('#dialog-box').width() / 2);
+
+            // assign values to the overlay and dialog box
+            $('#dialog-overlay').css({ height: maskHeight, width: maskWidth }).show();
+            $('#dialog-box').css({ top: dialogTop, left: dialogLeft }).show();
+
+            // display the message
+            $('#dialog-message').html(message);
+
+        }
+
+     var hidden = false;
+        //function HideIt() {
+        //  document.getElementById('OrderButton').style.visibility = 'hidden';
+        //  return "";
+        //}
+    //    window.onbeforeunload = HideIt;
+        //function detectRefresh() {
+        //    try {
+        //            if (window.opener.title == undefined) {
+        //            isRefresh = true;
+        //            window.location.href = "/Search/CarsIndex/";
+        //            console.log('Window was refreshed!');
+        //        }
+        //    }
+        //    catch (err) {
+        //        isRefresh = false;
+        //        document.getElementById('OrderButton').style.visibility = 'hidden';
+        //        console.log('Window was closed!');
+        //                }
+        //   }
+        
+        $('#OrderButton').click(function () {
+            hidden = !hidden;
+            if(hidden) {  document.getElementById('OrderButton').style.visibility = 'hidden'; }
+            else       {  document.getElementById('OrderButton').style.visibility = 'visible';}
+            $.ajax    ({
+                type   : "GET",
+                url    : '@Url.Action("MakeOrder","Rent")',
+                data   : { CarNumber: '@Model.CarNumber' },
+                cache  : false, // Cache-הוראה לדפדפן לא לשמור את הדף ב
+                error  : function (err)   {  popup("Error: testing" + err.statusText); },
+                success: function (msg) {  popup("Dear Mr/s " + '@Model.UserName' + " your order has been aprooved");}
+            });
+        });
+
+        $(document).keydown(function (e)
+        {
+            if (e.which == 116) // key code of the F5 button 
+            {
+                    window.location.href = "/Car/Index/"
+               
+            }
+        });
+      
+        function checkRefresh() {
+            // Get the time now and convert to UTC seconds
+            var today = new Date();
+            var now = today.getUTCSeconds();
+
+            // Get the cookie
+            var cookie = document.cookie;
+            var cookieArray = cookie.split('; ');
+
+            // Parse the cookies: get the stored time
+            for (var loop = 0; loop < cookieArray.length; loop++) {
+                var nameValue = cookieArray[loop].split('=');
+                // Get the cookie time stamp
+                if (nameValue[0].toString() == 'SHTS') {
+                    var cookieTime = parseInt(nameValue[1]);
+                }
+                    // Get the cookie page
+                else if (nameValue[0].toString() == 'SHTSP') {
+                    var cookieName = nameValue[1];
+                }
+            }
+
+            if (cookieName &&
+                cookieTime &&
+                cookieName == escape(location.href) &&
+                Math.abs(now - cookieTime) < 5) {
+                // Refresh detected
+                popup("Dear Mr/s  your order has been aprooved");
+               // window.location.href = "/Search/CarsIndex/";
+                // Insert code here representing what to do on
+                // a refresh
+
+                // If you would like to toggle so this refresh code
+                // is executed on every OTHER refresh, then 
+                // uncomment the following line
+                // refresh_prepare = 0; 
+            }
+
+            // You may want to add code in an else here special 
+            // for fresh page loads
+        }
+
+        function prepareForRefresh() {
+            if (refresh_prepare > 0) {
+                // Turn refresh detection on so that if this
+                // page gets quickly loaded, we know it's a refresh
+                var today = new Date();
+                var now = today.getUTCSeconds();
+                document.cookie = 'SHTS=' + now + ';';
+                document.cookie = 'SHTSP=' + escape(location.href) + ';';
+                popup("Dear Mr/s  your refresh_prepare > 0");
+            }
+            else {
+                // Refresh detection has been disabled
+                popup("Dear Mr/s  your refresh_prepare < 0");
+                document.cookie = 'SHTS=;';
+                document.cookie = 'SHTSP=;';
+
+            }
+        }
+
+   </script>
+ }

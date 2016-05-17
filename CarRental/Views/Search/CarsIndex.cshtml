@@ -1,0 +1,397 @@
+﻿@using Share.Bonnet.AjaxDropDownList;
+@model  Shim_Cars.Models.SearchViewModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+
+@using (Html.BeginForm())
+{
+  
+     @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+ 
+    <fieldset>
+        <legend>CarSearch</legend>
+        <style>
+        table,th,td {
+    border:1px solid black;
+          }
+
+caption { 
+    display: table-caption;
+    text-align: center;
+}
+</style>
+     <div class="row">
+<div id="formLeft" class="col-xs-3"> 
+
+    //choosing the start and return date is done manualy or by DatePicker
+        <div class="editor -label">
+            @Html.LabelFor(model => model.BeginDate)
+        </div>
+         <div class="editor-field">
+            @Html.EditorFor(model => model.BeginDate )
+            @Html.ValidationMessageFor(model => model.BeginDate)
+  
+
+
+  </div>
+  
+        <div class="editor -label">
+            @Html.LabelFor(model => model.EndDate)
+        </div>
+         <div class="editor-field">
+            @Html.EditorFor(model => model.EndDate)
+            @Html.ValidationMessageFor(model => model.EndDate)
+        </div>
+        
+           <div class="editor -label">
+               <br />
+              @Html.LabelFor(model => model.TransmissionType)
+              </div>
+       
+            <div @*class="col-xs-6"*@>
+          @* 	<input type="hidden" name="cd-dropdown">*@
+
+            @Html.DropDownListFor(
+            model => Model.TransmissionType,
+            Model.TransmissionTypeList,
+             new 
+             {    @class = "form-control"}
+            )
+           </div>
+
+ @* I use here the Bonnet MVC Ajax DropDownList to populates a second DropDownList  for tying to dropdownlist, *@
+   @* https://mvc4ajaxdropdownlist.codeplex.com/*@
+        <div @*class="col-xs-6"*@>
+            <div class="editor -label">
+                @Html.LabelFor(model => model.CarMake)
+            </div>
+        @Html.DropDownListFor(
+             
+            model => model.CarMake,
+            Model.CarMakeList,
+            new
+            {
+                @class = "form-control"
+            },
+                
+            Ajax.UpdateActionFor(
+                model => model.CarModel,
+                new AjaxUpdateOptions
+                {
+                    DisableTargetWhenEmpty = true,
+                    Url = Url.Action("CarModelsSelectListJson")
+
+                }
+            ))
+    </div>
+    <div class="editor -label">
+                @Html.LabelFor(model => model.CarModel)
+              </div>
+     <div @*class="col-xs-6"*@>
+        @Html.DropDownListFor(
+            model => model.CarModel,
+            Model.CarModelList,
+            new
+            {
+                @class = "form-control",
+                disabled = "disabled"
+            })
+     </div>
+       
+        <p>
+            <input id="myButton" type="button" value="Search" />
+        </p> 
+<br /><br /><br />
+        
+     
+ </div>
+@* Here was a 3d pure CSS carousle that i had to contmante with JS 
+         to achive the goal of inserting search result into the panels*@
+  <div id="CarrosselRight" class="col-xs-9">
+  <section class="container">
+  <div id="carousel">
+    <figure><img  class="imgCaroussel" id ="img0"  src="1" ><figcaption id="Caption0"  /></figure>
+    <figure><img  class="imgCaroussel" id ="img1"  src="2" ><figcaption id="Caption1" /></figure>
+    <figure><img  class="imgCaroussel" id ="img2"  src="3" ><figcaption id="Caption2" /></figure>
+    <figure><img  class="imgCaroussel" id ="img3"  src="4" ><figcaption id="Caption3" /></figure>
+ </div>
+</section> 
+</div>
+ </div>
+@*//i use external CSS that i found on the web eith slightly change it make nice style*@
+      @*  Search results table*@
+ <div class="CSSTableGenerator WithLinks" >
+ <div style ="max-height: 200px; overflow-y:scroll; margin:5px;" >    
+   <table id="SearchResultTable" style=" border:medium " ></table>
+ </div > </div > 
+@*   history search result table*@
+<div class="CSSTableGenerator" >
+<div style ="max-height: 200px; overflow-y:scroll; margin:5px;" >
+<table id="SearchParmTable" style=" border:medium "></table>
+</div></div>
+ </fieldset>
+  
+        
+}
+
+@section Scripts {
+@Styles.Render("Content/themes/bootstrap-datepicker.css")
+    <script type="text/javascript">
+        var SearchResultNum = 0;
+        $(document).ready(function()
+        {
+                
+        } )
+        $.datepicker.setDefaults({
+            showOn: "button",
+            buttonImage: "sunbird.png", 
+            buttonImageOnly: true, 
+            buttonText: "Select date",
+            dateFormat: "yy-mm-dd",
+            minDate: 0,
+            maxDate: 60 //decide to rent a car bo more than 2 months.
+        });
+        
+        $('#BeginDate').datepicker({
+            onSelect: function (selectedDate) {
+                $('#EndDate').datepicker('option', 'minDate', selectedDate );
+            }
+        });
+        $('#EndDate').datepicker({
+            onSelect: function (selectedDate) {//that how to set that the return date will be allways later or the same date as
+                // the start date
+                $('#BeginDate').datepicker('option', 'maxDate', selectedDate );
+            }
+         
+        });
+      
+        function TransTyps(BoolGear) {
+            if (BoolGear ==="0")
+            { return false }
+            else if (BoolGear === "1") { return true }
+            return null;             
+        }
+        function GearTyps(BoolGear)
+        {
+            if (BoolGear === true)
+            { return "Automatic" }
+            else { return "Manual" };           
+        }
+        var data = [];
+        var arr = [];
+        function addHistory() {
+            data.push({
+                    PicUpDate  :  $("#BeginDate").val(),
+                    ReturnDate :  $("#EndDate").val(),
+                    CarMake    :  $("#CarMake").find('option:selected').text(),
+                    CarModel   :  $("#CarModel").find('option:selected').text(),
+                    GearType   :  TransTyps($("#TransmissionType").val())
+
+            });
+            arr = JSON.parse(localStorage.getItem('memoriesdata'));
+            if (arr == null) arr = [];
+            localStorage.setItem('memoriesdata', JSON.stringify(data));
+               }
+        
+        function addEntry() {
+
+            // Parse any JSON previously stored in allEntries
+            var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+            if (existingEntries == null) existingEntries = [];
+            var entry =
+                {
+                       PicUpDate: $("#BeginDate").val(),
+                       ReturnDate: $("#EndDate").val(),
+                       CarMake: $("#CarMake").find('option:selected').text(),
+                       CarModel: $("#CarModel").find('option:selected').text(),
+                       GearType: TransTyps($("#TransmissionType").val())
+                };
+            //if (JSON.parse(localStorage.allEntries).length > 6)
+            //   {
+            //    for(i=0;i< SearchResultNum; i++)
+            //        localStorage.removeItem("allEntries");
+            //  }
+    
+            localStorage.setItem("entry", JSON.stringify(entry));
+            // Save allEntries back to local storage
+            existingEntries.push(entry);
+            localStorage.setItem("allEntries", JSON.stringify(existingEntries) );
+        }
+        
+        
+
+        function LoadArry() {   arr = JSON.parse(localStorage.getItem('memoriesdata')); }
+        
+        function SearchHistoryTotal() {
+            //if (JSON.parse(localStorage.allEntries).length > 6) {
+            //    for (i = 0; i < SearchResultNum; i++)
+            //        localStorage.removeItem("memoriesdata");
+             //       localStorage.clear();
+            //  }
+            addEntry();
+            ShowSearchHistory();
+        }
+
+        function ShowSearchHistory() {
+            var arr = JSON.parse(localStorage.getItem("allEntries"));
+            var myTable = "<caption>HistorySearchTable</caption><tr><th>PicUpDate</th><th>ReturnDate</th><th>CarMake</th><th>CarModel</th><th>GearType</th></tr>";
+            for (var key in arr) {
+                if (arr.hasOwnProperty(key)) {
+                    myTable += "<tr><td>" +
+                    arr[key].PicUpDate    + "</td><td>" +
+                    arr[key].ReturnDate   + "</td><td>" +
+                    arr[key].CarMake      + "</td><td>" +
+                    arr[key].CarModel     + "</td><td>" +
+                    GearTyps( arr[key].GearType) + "</td></tr>"; 
+                }
+            }
+            document.getElementById('SearchParmTable').innerHTML = myTable;
+
+        }
+       
+        LoadArry();
+        ShowSearchHistory();
+
+        function SearchData(row)
+        { 
+               var OrderData =         {
+                   "PicUpDate"           : $("#BeginDate").val(),
+                   "ReturnDate"          : $("#EndDate").val(),
+                   "ManufacturerName"    : row.cells[0].innerHTML,
+                   "ModelName"           : row.cells[1].innerHTML,
+                   "Year"                : row.cells[2].innerHTML,
+                   "GearType"            : row.cells[3].innerHTML,
+                   "DailyRentalCost"     : row.cells[4].innerHTML,
+                   "DailyLateReturnCost" : row.cells[5].innerHTML,
+                   "CarNumber"           : row.cells[6].innerHTML
+                         
+               };
+            return OrderData;
+        }
+
+        $('#OrderButton').click(function () {
+            $.ajax({
+
+                type: "GET",
+
+                url: '@Url.Action("SaveInSession", "Search")',
+               
+                data: {
+                    BeginDate: $("#BeginDate").val(), EndDate: $("#EndDate").val()},
+                cache: false, // Cache-הוראה לדפדפן לא לשמור את הדף ב
+
+                error: function (err) {
+                    alert("Error: " + err.statusText);
+                },
+
+                success: function () { 
+                    alert("order has been sent");
+                    window.location.href = '/Rent/OrderIndex/';
+                
+                }
+              
+        });
+        });
+
+        var host = window.location.host;
+        function getCarMakeFolderPath(CarMake) { return "http://"+ window.location.host + "//Search//" + CarMake;}
+        
+        var ImageFileType = ".jpg";
+        function getCarModelFileName(CarModel) { return "//" + CarModel + ImageFileType; }
+        var LastIndex = 0;
+
+        function AddToCarousel(CarsToRent) {
+            var StackImageId = ['img0', 'img1', 'img2', 'img3'];
+            var Caption = ['Caption0', 'Caption1', 'Caption2', 'Caption3'];
+            var CarouselPanels = 4;
+            var len = CarsToRent.length > CarouselPanels ? CarouselPanels : CarsToRent.length;
+            var MakePath = "";
+            var fileModel = "";
+            var paths = [];
+           for (var i = 0; i < len; i++)
+           {
+            
+                 //Path Calculation
+                MakePath = getCarMakeFolderPath(CarsToRent[i].ManufacturerName);
+                fileModel = getCarModelFileName(CarsToRent[i].ModelName);
+                paths[i] = MakePath + fileModel;
+                document.getElementById(StackImageId[(LastIndex++) % 4]).setAttribute('src', paths[i]);
+                document.getElementById(Caption[(LastIndex-1) % 4]).innerHTML= CarsToRent[i].ManufacturerName +" "+ CarsToRent[i].ModelName;
+            }
+
+        }
+        var AbstractCar = {
+                          "ManufacturerName": "Abstract",
+                          "ModelName": "Cars"    };
+        var AbstractCars = [AbstractCar, AbstractCar, AbstractCar, AbstractCar];
+        window.onload   = AddToCarousel(AbstractCars);
+        $('#myButton').click(function () {
+            $.ajax({
+
+                type: "GET", // Verb
+
+                url: '@Url.Action("SearchForUnicRent", "Search")', // Requestd Page
+
+                data: {
+                    BeginDate: $("#BeginDate").val(), EndDate: $("#EndDate").val(), CarMake: $("#CarMake").val(),
+                    CarModel: $("#CarModel").val(), GearType: TransTyps($("#TransmissionType").val())
+                }, // המידע שברצוננו לשלוח
+
+                cache: false, // Cache-הוראה לדפדפן לא לשמור את הדף ב
+
+                error: function (err) {
+                    alert("Error: " + err.statusText);
+                },
+
+                success: function (CarsToRent) { // 200 איזו פונקציה לבצע אם התקבל קוד
+                    if (CarsToRent.length > 0) {
+                            SearchResultNum = CarsToRent.length;
+                            $("#SearchResultTable").html("<caption>SearchResultTable</caption><tr><th>ManufacturerName</th><th>ModelName</th><th>Year</th><th>Gear</th><th>DailyRentalCost</th><th>DailyLateReturnCost</th></tr>");
+                        for (var i = 0; i < CarsToRent.length; i++) {
+                            var tr = "<tr><td >" + CarsToRent[i].ManufacturerName + "</td><td>" +
+                            CarsToRent[i].ModelName + "</td><td>" +
+                            CarsToRent[i].Year + "</td><td>" +
+                            GearTyps(CarsToRent[i].Gear) + "</td><td>" +
+                            CarsToRent[i].DailyRentalCost + "</td><td class='lastcolumn' >" +
+                            CarsToRent[i].DailyLateReturnCost + "</td><td style='display: none;'>" +
+                            CarsToRent[i].CarNumber + "</td></tr>";
+
+                            $("#SearchResultTable").append(tr);
+                        }
+                    }
+                    else
+                        $("#SearchResultTable").remove();
+                    SearchHistoryTotal();
+                    AddToCarousel(CarsToRent);
+                }
+
+            });
+                    });
+                  
+                    $('#SearchResultTable').on('click', 'tr', function (e) {
+                          $('td', this).css('background-color', 'yellow');
+                          var  Order = SearchData(this);
+                          var  queryString =
+                              "PicUpDate=" + String(Order.PicUpDate) +
+                              "&ReturnDate=" + String(Order.ReturnDate) +
+                              "&ManufacturerName=" + Order.ManufacturerName +
+                              "&ModelName=" + Order.ModelName +
+                               "&Year=" + String(Order.Year) +
+                               "&GearType=" + Order.GearType +
+                               "&DailyRentalCost=" + String(Order.DailyRentalCost) +
+                               "&DailyLateReturnCost=" + String(Order.DailyLateReturnCost)  + 
+                               "&CarNumber="    + String(Order.CarNumber);
+                                window.location.href = "/Rent/Order/?" + queryString;
+                      
+                      })
+                            
+               
+
+    </script>
+    }

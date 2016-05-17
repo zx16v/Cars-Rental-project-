@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+   
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/TableCSSCode.css" rel="stylesheet" />
+    <link href="~/Content/StDialogBox.css"  rel="stylesheet" />
+   <link href="~/Content/Crousel.css" rel= "stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+   @*<script src="~/Scripts/SearchFormCarModelList.js"></script>*@
+   </head>
+   <body @*onLoad="JavaScript:checkRefresh();" onUnload="JavaScript:prepareForRefresh();"*@>
+   <div id="body">
+   @*   @RenderSection("scripts", required: false)*@
+   <section class ="content-warper main-content clear-fix">
+   @RenderBody()
+   </section>
+   </div>
+   
+ @*  @Styles.Render("~/Content/css")*@
+ @Scripts.Render("~/bundles/jquery")
+ @Scripts.Render("~/bundles/jqueryui")
+
+    
+   @*   @Styles.Render("~/Content/themes/base/css","~/Content/css")*@
+         @Styles.Render("~/Content/themes/base/css")
+         @Scripts.Render("~/bundles/bonnet")
+         @RenderSection("scripts", required: false)
+     
+</body>
+</html>
+
+

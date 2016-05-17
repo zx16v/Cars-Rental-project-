@@ -1,0 +1,34 @@
+﻿
+@model  List<Shim_Cars.GetCars_Result>
+
+
+@{
+    ViewBag.Title = "All Cars";
+  
+    
+}
+@Html.ActionLink("Manufacturers", "Index", "Manufacturers");
+@Html.ActionLink("Login", "Login", "Accounts");
+@Html.ActionLink("Register", "Register", "Accounts");
+@Html.ActionLink("Search", "CarsIndex", "Search");
+@Html.ActionLink("Logout", "Logout", "Accounts");
+@Html.ActionLink( "CarsPanels", "Index","CarsModels");
+<h2>All Cars</h2>
+<div class="CSSTableGenerator" style ="height: 400px; overflow-y:auto">
+   <table id="AllCarsTable"  >
+   <tr><th>ManufacturerName</th><th>ModelName</th><th>Year</th><th>GearType</th><th>DailyRentalCost</th><th>DailyLateReturnCost</th></tr>
+  @foreach (Shim_Cars.GetCars_Result item in Model)
+  {
+    <tr>
+    <td>@item.ManufacturerName</td>
+    <td>@item.ModelName</td>  
+    <td>@item.Year</td> 
+    <td>@item.GetGearType()</td>
+    <td>@item.DailyRentalCost</td> 
+    <td>@item.DailyLateReturnCost</td>
+    </tr>
+  }
+</table>
+</div>
+
+ 

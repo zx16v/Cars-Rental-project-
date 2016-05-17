@@ -1,0 +1,74 @@
+﻿@model Shim_Cars.CarsModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>CarsModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModelCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModelCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Manufacturer.ManufacturerName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Manufacturer.ManufacturerName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModelName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModelName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Year)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Year)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Gear)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Gear)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DailyRentalCost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DailyRentalCost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DailyLateReturnCost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DailyLateReturnCost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Remarks)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Remarks)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

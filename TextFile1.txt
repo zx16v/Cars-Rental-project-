@@ -1,0 +1,29 @@
+ function showFullName() {
+
+
+            // http://api.jquery.com/jquery.ajax
+
+            $.ajax({
+
+                type: "GET", // Verb
+
+                url: "/Cars/GetData", // Requestd Page
+
+                data: { empID: $("#txtEmployeeID").val(), b: 11, c: 22 }, // המידע שברצוננו לשלוח
+
+                cache: false, // Cache-הוראה לדפדפן לא לשמור את הדף ב
+
+                error: function (err) { // 200 איזו פונקציה לבצע אם לא התקבל קוד
+                    alert("Error: " + err.statusText);
+                }, 
+
+                success: function (data) { // 200 איזו פונקציה לבצע אם התקבל קוד
+                    $("#lblFullName").html(data);
+                }
+
+            });
+
+            //$.get // GET אך הוגדר עבורנו קריאת $.ajax דומה ל
+            //$.post // POST אך הוגדר עבורנו קריאת $.ajax דומה ל
+            //$.getJSON // JSON ושהמידע שנשלח ושמתקבל הינו בפורמט GET אך הוגדר עבורנו קריאת $.ajax דומה ל
+        }

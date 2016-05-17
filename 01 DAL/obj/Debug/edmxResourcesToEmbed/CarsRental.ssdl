@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarsRentalModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CarsRentalModelStoreContainer">
+    <EntitySet Name="Cars" EntityType="CarsRentalModel.Store.Cars" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CarsModels" EntityType="CarsRentalModel.Store.CarsModels" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CarsRental" EntityType="CarsRentalModel.Store.CarsRental" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Manufacturers" EntityType="CarsRentalModel.Store.Manufacturers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="CarsRentalModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="CarsRentalModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="CarsRentalModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserVsRoles" EntityType="CarsRentalModel.Store.UserVsRoles" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__UserVsRol__RoleI__21B6055D" Association="CarsRentalModel.Store.FK__UserVsRol__RoleI__21B6055D">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UserVsRoles" EntitySet="UserVsRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserVsRol__UserI__5BE2A6F2" Association="CarsRentalModel.Store.FK__UserVsRol__UserI__5BE2A6F2">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserVsRoles" EntitySet="UserVsRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AllCars_CarsModels" Association="CarsRentalModel.Store.FK_AllCars_CarsModels">
+      <End Role="CarsModels" EntitySet="CarsModels" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarsModels_Manufacturers" Association="CarsRentalModel.Store.FK_CarsModels_Manufacturers">
+      <End Role="Manufacturers" EntitySet="Manufacturers" />
+      <End Role="CarsModels" EntitySet="CarsModels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarsRental_AllCars1" Association="CarsRentalModel.Store.FK_CarsRental_AllCars1">
+      <End Role="Cars" EntitySet="Cars" />
+      <End Role="CarsRental" EntitySet="CarsRental" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarsRental_Users1" Association="CarsRentalModel.Store.FK_CarsRental_Users1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="CarsRental" EntitySet="CarsRental" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Cars">
+    <Key>
+      <PropertyRef Name="CarNumber" />
+    </Key>
+    <Property Name="CarNumber" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ModelCode" Type="int" Nullable="false" />
+    <Property Name="Mileage" Type="decimal" Nullable="false" />
+    <Property Name="CarImage" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Available" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarsModels">
+    <Key>
+      <PropertyRef Name="ModelCode" />
+    </Key>
+    <Property Name="ModelCode" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ManufacturerCode" Type="int" Nullable="false" />
+    <Property Name="ModelName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Gear" Type="bit" Nullable="false" />
+    <Property Name="DailyRentalCost" Type="decimal" Nullable="false" />
+    <Property Name="DailyLateReturnCost" Type="decimal" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="CarsRental">
+    <Key>
+      <PropertyRef Name="CodeCarRental" />
+    </Key>
+    <Property Name="CodeCarRental" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CarNumber" Type="int" Nullable="false" />
+    <Property Name="UserIDCode" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="ReturnDate" Type="date" Nullable="false" />
+    <Property Name="ActualReturnDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Manufacturers">
+    <Key>
+      <PropertyRef Name="ManufacturerCode" />
+    </Key>
+    <Property Name="ManufacturerCode" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ManufacturerName" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="varchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserIDCode" />
+    </Key>
+    <Property Name="UserIDCode" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="BirthDate" Type="date" />
+  </EntityType>
+  <EntityType Name="UserVsRoles">
+    <Key>
+      <PropertyRef Name="UserIDCode" />
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="UserIDCode" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__UserVsRol__RoleI__21B6055D">
+    <End Role="Roles" Type="CarsRentalModel.Store.Roles" Multiplicity="1" />
+    <End Role="UserVsRoles" Type="CarsRentalModel.Store.UserVsRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="UserVsRoles">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserVsRol__UserI__5BE2A6F2">
+    <End Role="Users" Type="CarsRentalModel.Store.Users" Multiplicity="1" />
+    <End Role="UserVsRoles" Type="CarsRentalModel.Store.UserVsRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserIDCode" />
+      </Principal>
+      <Dependent Role="UserVsRoles">
+        <PropertyRef Name="UserIDCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AllCars_CarsModels">
+    <End Role="CarsModels" Type="CarsRentalModel.Store.CarsModels" Multiplicity="1" />
+    <End Role="Cars" Type="CarsRentalModel.Store.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarsModels">
+        <PropertyRef Name="ModelCode" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="ModelCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarsModels_Manufacturers">
+    <End Role="Manufacturers" Type="CarsRentalModel.Store.Manufacturers" Multiplicity="1" />
+    <End Role="CarsModels" Type="CarsRentalModel.Store.CarsModels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturers">
+        <PropertyRef Name="ManufacturerCode" />
+      </Principal>
+      <Dependent Role="CarsModels">
+        <PropertyRef Name="ManufacturerCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarsRental_AllCars1">
+    <End Role="Cars" Type="CarsRentalModel.Store.Cars" Multiplicity="1" />
+    <End Role="CarsRental" Type="CarsRentalModel.Store.CarsRental" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cars">
+        <PropertyRef Name="CarNumber" />
+      </Principal>
+      <Dependent Role="CarsRental">
+        <PropertyRef Name="CarNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarsRental_Users1">
+    <End Role="Users" Type="CarsRentalModel.Store.Users" Multiplicity="1" />
+    <End Role="CarsRental" Type="CarsRentalModel.Store.CarsRental" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserIDCode" />
+      </Principal>
+      <Dependent Role="CarsRental">
+        <PropertyRef Name="UserIDCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAvailableCars" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="desiredStartDate" Type="date" Mode="In" />
+    <Parameter Name="desiredEndDate" Type="date" Mode="In" />
+    <Parameter Name="MakeID" Type="int" Mode="In" />
+    <Parameter Name="ModelCode" Type="int" Mode="In" />
+    <Parameter Name="GearType" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="GetAvailableCarsByModels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="desiredStartDate" Type="date" Mode="In" />
+    <Parameter Name="desiredEndDate" Type="date" Mode="In" />
+    <Parameter Name="MakeID" Type="int" Mode="In" />
+    <Parameter Name="ModelCode" Type="int" Mode="In" />
+    <Parameter Name="GearType" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="GetAvailableCarsColumn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="desiredStartDate" Type="date" Mode="In" />
+    <Parameter Name="desiredEndDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="GetCars" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetCarsModelByMaker" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MakerID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetUnicAvailableCars" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="desiredStartDate" Type="date" Mode="In" />
+    <Parameter Name="desiredEndDate" Type="date" Mode="In" />
+    <Parameter Name="MakeID" Type="int" Mode="In" />
+    <Parameter Name="ModelCode" Type="int" Mode="In" />
+    <Parameter Name="GearType" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="IsCarTaken" ReturnType="bit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="desiredStartDate" Type="date" Mode="In" />
+    <Parameter Name="desiredEndDate" Type="date" Mode="In" />
+    <Parameter Name="rentalStartDate" Type="date" Mode="In" />
+    <Parameter Name="rentalEndDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="nulltest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="rmk" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="RentOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="desiredStartDate" Type="date" Mode="In" />
+    <Parameter Name="desiredEndDate" Type="date" Mode="In" />
+    <Parameter Name="CarNumber" Type="int" Mode="In" />
+    <Parameter Name="UserIdCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SearchCar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BeginDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+    <Parameter Name="MakerID" Type="int" Mode="In" />
+    <Parameter Name="ModelCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SearchRentedCarsByDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BeginDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ManufacturerName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModelName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Gear" Type="bit" Nullable="false" />
+          <Property Name="DailyRentalCost" Type="decimal" Nullable="false" />
+          <Property Name="DailyLateReturnCost" Type="decimal" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+</Schema>

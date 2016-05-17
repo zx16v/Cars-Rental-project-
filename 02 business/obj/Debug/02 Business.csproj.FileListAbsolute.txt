@@ -1,0 +1,69 @@
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\02 business\bin\Debug\02 business.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\02 business\bin\Debug\02 business.pdb
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\02 business\bin\Debug\01 DAL.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\02 business\bin\Debug\EntityFramework.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\02 business\bin\Debug\01 DAL.pdb
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\02 business\bin\Debug\EntityFramework.xml
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\02 business\obj\Debug\02 Business.csprojResolveAssemblyReference.cache
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\02 business\obj\Debug\02 business.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\01 DAL\02 business\obj\Debug\02 business.pdb
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\02 business\bin\Debug\02 business.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\02 business\bin\Debug\02 business.pdb
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\02 business\bin\Debug\01 DAL.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\02 business\bin\Debug\EntityFramework.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\02 business\bin\Debug\01 DAL.pdb
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\02 business\bin\Debug\EntityFramework.xml
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\02 business\obj\Debug\02 Business.csprojResolveAssemblyReference.cache
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\02 business\obj\Debug\02 business.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-4-10-2015\02 business\obj\Debug\02 business.pdb
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\02 business\bin\Debug\02 business.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\02 business\bin\Debug\02 business.pdb
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\02 business\bin\Debug\01 DAL.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\02 business\bin\Debug\EntityFramework.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\02 business\bin\Debug\01 DAL.pdb
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\02 business\bin\Debug\EntityFramework.xml
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\02 business\obj\Debug\02 Business.csprojResolveAssemblyReference.cache
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\02 business\obj\Debug\02 business.dll
+C:\Users\levil\Documents\Visual Studio 2012\Projects\mvc project\01 DAL-5-10-2015\02 business\obj\Debug\02 business.pdb
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\02 business.dll
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\02 business.pdb
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\01 DAL.dll
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\EntityFramework.dll
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.Mvc.dll
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.Razor.dll
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.WebPages.Razor.dll
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.WebPages.dll
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\01 DAL.pdb
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\EntityFramework.xml
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.Mvc.xml
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.Razor.xml
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.WebPages.Razor.xml
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.WebPages.xml
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\Microsoft.Web.Infrastructure.xml
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\obj\Debug\02 Business.csprojResolveAssemblyReference.cache
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\obj\Debug\02 business.dll
+C:\mvc\MyProjects\01 DAL-5-10-2015\02 business\obj\Debug\02 business.pdb
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\02 business.dll
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\02 business.pdb
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\01 DAL.dll
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\EntityFramework.dll
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.Mvc.dll
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.Razor.dll
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.WebPages.dll
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\01 DAL.pdb
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\EntityFramework.xml
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.Mvc.xml
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.Razor.xml
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.WebPages.xml
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\Microsoft.Web.Infrastructure.xml
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\obj\Debug\02 Business.csprojResolveAssemblyReference.cache
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\obj\Debug\02 business.dll
+C:\Users\SHIMI\Downloads\mvc\MyProjects\01 DAL-5-10-2015\02 business\obj\Debug\02 business.pdb
